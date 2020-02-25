@@ -20,7 +20,7 @@
 /obj/item/clothing/mask/gas/Initialize()
 	. = ..()
 	if(should_tint)
-		AddComponent(/datum/component/clothing_tint, TINT_5)
+		AddComponent(/datum/component/clothing_tint, TINT_NONE)
 
 /obj/item/clothing/mask/gas/PMC
 	name = "\improper M8 pattern armored balaclava"
