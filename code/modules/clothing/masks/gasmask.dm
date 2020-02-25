@@ -15,12 +15,12 @@
 	siemens_coefficient = 0.9
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(/datum/reagent/toxin/phoron, "sleeping_agent", "carbon_dioxide")
-	var/should_tint = TRUE
+	var/should_tint = FALSE
 
 /obj/item/clothing/mask/gas/Initialize()
 	. = ..()
 	if(should_tint)
-		AddComponent(/datum/component/clothing_tint, TINT_NONE)
+		AddComponent(/datum/component/clothing_tint, TINT_3)
 
 /obj/item/clothing/mask/gas/PMC
 	name = "\improper M8 pattern armored balaclava"
@@ -31,11 +31,12 @@
 	armor = list("melee" = 10, "bullet" = 10, "laser" = 5, "energy" = 5, "bomb" = 10, "bio" = 1, "rad" = 1, "fire" = 5, "acid" = 5)
 	flags_inventory = COVERMOUTH|ALLOWINTERNALS|BLOCKGASEFFECT|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
-	should_tint = FALSE
 
 /obj/item/clothing/mask/gas/PMC/damaged
 	name = "damaged M8 pattern armored balaclava"
+	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter. This one appears to be damaged, making it difficult to see."
 	anti_hug = 0
+	should_tint = TRUE
 
 /obj/item/clothing/mask/gas/PMC/upp
 	name = "\improper UPP armored commando balaclava"
