@@ -13,6 +13,7 @@
 #define RO_PRICE_PRETTY_PRICY	80
 #define RO_PRICE_VERY_PRICY		100
 #define RO_PRICE_MAX_PRICY		120
+#define RO_PRICE_TOO_PRICY		240
 
 GLOBAL_LIST_INIT(all_supply_groups, list("Operations", "Weapons", "Hardpoint Modules", "Attachments", "Ammo", "Armor", "Clothing", "Medical", "Engineering", "Science", "Supplies"))
 
@@ -562,6 +563,16 @@ WEAPONS
 	cost = RO_PRICE_VERY_PRICY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HIDP grenade crate (WARNING)"
+	group = "Weapons"
+
+/datum/supply_packs/explosives_hsdp
+	name = "M40 HPDP white phosphorous grenade box crate (x25)"
+	contains = list(
+					/obj/item/storage/box/nade_box/phos
+					)
+	cost = RO_PRICE_TOO_PRICY
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper explosive HPDP grenade crate (WARNING)"
 	group = "Weapons"
 
 /datum/supply_packs/explosives_m15
