@@ -223,14 +223,20 @@
 	playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 	smoke.set_up(4, loc, 7)
 	smoke.start()
+	flame_radius(4, get_turf(src))
 	qdel(src)
 
+flame_radius(radius = 1, turf/T, burn_intensity = 45, burn_duration = 75, burn_damage = 15, fire_stacks = 75)
+	if(!T || !isturf(T))
+		return
 
 /obj/item/explosive/grenade/phosphorus/upp
 	name = "\improper Type 8 WP grenade"
-	desc = "A deadly gas grenade found within the ranks of the UPP. Designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
+	desc = "A deadly gas grenade found within the ranks of the UPP. Designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled. \
+	This is a copy of the TGMC's handheld variant, with little changes aside from being slightly larger. As such, it can't be launched from a UGL."
 	icon_state = "grenade_upp_wp"
 	item_state = "grenade_upp_wp"
+	underslug_launchable = FALSE
 
 /obj/item/explosive/grenade/impact
 	name = "\improper M40 IMDP grenade"

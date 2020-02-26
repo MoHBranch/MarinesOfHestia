@@ -299,11 +299,11 @@
 	armor = list("melee" = 75, "bullet" = 70, "laser" = 60, "energy" = 40, "bomb" = 60, "bio" = 50, "rad" = 0, "fire" = 50, "acid" = 55)
 	accuracy_mod = -10
 	flags_item_map_variant = (ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_PRISON_VARIANT|ITEM_ICE_PROTECTION)
-
+/*
 /obj/item/clothing/head/helmet/marine/heavy/Initialize()
 	. = ..()
 	AddComponent(/datum/component/clothing_tint, TINT_1)
-
+*/
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern leader helmet"
 	desc = "A slightly fancier helmet for marine leaders. This one has cushioning to project your fragile brain."

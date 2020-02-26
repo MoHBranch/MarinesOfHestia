@@ -217,12 +217,12 @@
 	icon_state = "sun"
 	item_state = "sunglasses"
 	eye_protection = 1
-
+/*
 /obj/item/clothing/glasses/sunglasses/Initialize()
 	. = ..()
 	if(eye_protection)
 		AddComponent(/datum/component/clothing_tint, TINT_3)
-
+*/
 /obj/item/clothing/glasses/sunglasses/blindfold
 	name = "blindfold"
 	desc = "Covers the eyes, preventing sight."
