@@ -24,6 +24,7 @@ SUBSYSTEM_DEF(weeds)
 		var/obj/effect/alien/weeds/node/N = currentrun[A]
 		currentrun -= A
 		var/turf/T = A
+
 		if (istype(N.loc, /turf/closed/wall/resin))
 			continue
 		
