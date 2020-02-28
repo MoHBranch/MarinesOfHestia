@@ -410,3 +410,113 @@
 
 /obj/item/weapon/gun/energy/lasgun/M43/practice/unique_action(mob/user)
 	return
+
+//-------------------------------------------------------
+//M43 Sunfury Lasgun MK1
+
+/obj/item/weapon/gun/energy/lasgun/plasmagun
+	name = "\improper M99 Recoilless Plasma Launcher"
+	desc = "An accurate, recoilless plasma based battle rifle with an integrated charge selector. Ideal for longer range engagements. Uses power cells instead of ballistic magazines.."
+	force = 20 //Large and hefty! Includes stock bonus.
+	icon_state = "m43"
+	item_state = "m43"
+	max_shots = 50 //codex stuff
+	load_method = CELL //codex stuff
+	ammo = /datum/ammo/energy/lasgun/M43
+	cell_type = null
+	charge_cost = M43_STANDARD_AMMO_COST
+	attachable_allowed = list(
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/gyro,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/attached_gun/flamer,
+						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/focuslens,
+						/obj/item/attachable/widelens,
+						/obj/item/attachable/heatlens,
+						/obj/item/attachable/efflens,
+						/obj/item/attachable/pulselens)
+	var/overcharge_position = 1
+	var/list/overcharge_datums = list(
+						/datum/plasmagun/base/standard,
+						/datum/plasmagun/base/overcharge,
+						/datum/plasmagun/base/heat
+								)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ENERGY|GUN_AMMO_COUNTER
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/lasgun)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 15, "stock_x" = 22, "stock_y" = 12)
+
+	accuracy_mult_unwielded = 0.5 //Heavy and unwieldy; you don't one hand this.
+	scatter_unwielded = 100 //Heavy and unwieldy; you don't one hand this.
+	damage_falloff_mult = 0.25
+	fire_delay = 3
+
+/datum/plasmagun/base
+	var/charge_cost = 0
+	var/ammo = null
+	var/fire_delay = 0
+	var/fire_sound = null
+	var/message_to_user = ""
+
+/datum/plasmagun/base/standard
+	charge_cost = 10
+	ammo = /datum/ammo/energy/lasgun/M43
+	fire_delay = 3
+	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
+	message_to_user = "You set the Plasmagun's charge mode to standard fire."
+
+/datum/plasmagun/base/overcharge
+	charge_cost = 20
+	ammo = /datum/ammo/energy/lasgun/M43/overcharge
+	fire_delay = 10
+	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
+	message_to_user = "You set the Plasmagun's charge mode to overcharge."
+
+/datum/plasmagun/base/heat
+	charge_cost = 20
+	ammo = /datum/ammo/energy/lasgun/M43/heat
+	fire_delay = 8
+	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
+	message_to_user = "You set the Plasmagun's charge mode to wave heat."
+
+
+//variant without ugl attachment
+/obj/item/weapon/gun/energy/lasgun/plasmagun/stripped
+	starting_attachment_types = list()
+
+/obj/item/weapon/gun/energy/lasgun/plasmagun/unique_action(mob/user)
+	return toggle_plasmamode(user)
+
+/obj/item/weapon/gun/energy/lasgun/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
+
+//Toggles charge mode. Changes how ther weapon operates
+/obj/item/weapon/gun/energy/lasgun/plasmagun/proc/toggle_plasmamode(mob/user)
+	var/max_overcharge_mode = length(overcharge_datums)
+	if(overcharge_position >= max_overcharge_mode)
+		overcharge_position = 1
+	else 
+		overcharge_position += 1
+
+	playsound(user, 'sound/weapons/emitter.ogg', 5, 0, 2)
+	charge_cost = initial(overcharge_datums[overcharge_position].charge_cost)
+	ammo = GLOB.ammo_list[initial(overcharge_datums[overcharge_position].ammo)]
+	fire_delay = initial(overcharge_datums[overcharge_position].fire_delay)
+	fire_sound = initial(overcharge_datums[overcharge_position].fire_delay)
+	to_chat(user, initial(overcharge_datums[overcharge_position].message_to_user))
+
+	if(user)
+		var/obj/screen/ammo/A = user.hud_used.ammo //The ammo HUD
+		A.update_hud(user)
+
+	return TRUE
