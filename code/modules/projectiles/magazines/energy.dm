@@ -62,17 +62,3 @@
 
 /obj/item/cell/lasgun/update_icon()
 	return FALSE
-
-/obj/item/cell/lasgun/plasmagun
-	name = "\improper M43 lasgun battery"
-	desc = "A specialized high density battery used to power the M43 lasgun."
-	base_ammo_icon = "m43"
-	icon_state = "m43"
-	gun_type = /obj/item/weapon/gun/energy/lasgun/plasmagun
-
-/obj/item/cell/lasgun/plasmagun/highcap// Large battery
-	name = "\improper M43 highcap lasgun battery"
-	desc = "An advanced, ultrahigh capacity battery used to power the M43 lasgun; has sixty percent more charge capacity than standard laspacks."
-	base_ammo_icon = "m43_e"
-	icon_state = "m43_e"
-	maxcharge = 1600

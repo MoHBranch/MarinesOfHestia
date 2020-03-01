@@ -134,6 +134,8 @@
 	accuracy_mult_unwielded = 0.6
 	scatter_unwielded = 80 //Heavy and unwieldy
 	damage_falloff_mult = 0.5
+	var/overcharge_position = 0
+	var/list/overcharge_datums = list()
 
 
 //-------------------------------------------------------
@@ -164,12 +166,13 @@
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/focuslens,
-						/obj/item/attachable/widelens,
-						/obj/item/attachable/heatlens,
-						/obj/item/attachable/efflens,
-						/obj/item/attachable/pulselens)
+						/obj/item/attachable/scope/mini)
+	overcharge_position = 1
+	overcharge_datums = list(
+						/datum/lasgun/base/standard,
+						/datum/lasgun/base/overcharge,
+						/datum/lasgun/base/heat
+								)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ENERGY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/lasgun)
@@ -179,6 +182,36 @@
 	scatter_unwielded = 100 //Heavy and unwieldy; you don't one hand this.
 	damage_falloff_mult = 0.25
 	fire_delay = 3
+
+//This is where you balance the Lasgun.
+/datum/lasgun/base
+	var/charge_cost = 0
+	var/ammo = null
+	var/fire_delay = 0
+	var/fire_sound = null
+	var/message_to_user = ""
+
+/datum/lasgun/base/standard
+	charge_cost = 10
+	ammo = /datum/ammo/energy/lasgun/M43
+	fire_delay = 3
+	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
+	message_to_user = "You set the Lasgun's charge mode to standard fire."
+
+/datum/lasgun/base/overcharge
+	charge_cost = 20
+	ammo = /datum/ammo/energy/lasgun/M43/overcharge
+	fire_delay = 10
+	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
+	message_to_user = "You set the Lasgun's charge mode to overcharge."
+
+/datum/lasgun/base/heat
+	charge_cost = 20
+	ammo = /datum/ammo/energy/lasgun/M43/heat
+	fire_delay = 8
+	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
+	message_to_user = "You set the Lasgun's charge mode to wave heat."
+
 
 //variant without ugl attachment
 /obj/item/weapon/gun/energy/lasgun/M43/stripped
@@ -194,38 +227,18 @@
 
 //Toggles Overcharge mode. Overcharge mode significantly increases damage and AP in exchange for doubled ammo usage and increased fire delay.
 /obj/item/weapon/gun/energy/lasgun/proc/toggle_chargemode(mob/user)
-	//if(in_chamber)
-	//	delete_bullet(in_chamber, TRUE)
-	if(ammo_diff == null)
-		to_chat(user, "[icon2html(src, user)] You need an appropriate lens to enable overcharge mode.")
-		return
-	if(overcharge == FALSE)
-		if(!cell)
-			playsound(user, 'sound/machines/buzz-two.ogg', 15, 0, 2)
-			to_chat(user, "<span class='warning'>You attempt to toggle on [src]'s overcharge mode but you have no battery loaded.</span>")
-			return
-		if(cell.charge < M43_OVERCHARGE_AMMO_COST)
-			playsound(user, 'sound/machines/buzz-two.ogg', 15, 0, 2)
-			to_chat(user, "<span class='warning'>You attempt to toggle on [src]'s overcharge mode but your battery pack lacks adequate charge to do so.</span>")
-			return
-		//While overcharge is active, double ammo consumption, and
-		playsound(user, 'sound/weapons/emitter.ogg', 5, 0, 2)
-		charge_cost = M43_OVERCHARGE_AMMO_COST
-		ammo = GLOB.ammo_list[ammo_diff]
-		fire_delay += 7 // 1 shot per second fire rate
-		fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
-		to_chat(user, "[icon2html(src, user)] You [overcharge? "<B>disable</b>" : "<B>enable</b>" ] [src]'s overcharge mode.")
-		overcharge = TRUE
-	else
-		playsound(user, 'sound/weapons/emitter2.ogg', 5, 0, 2)
-		charge_cost = M43_STANDARD_AMMO_COST
-		ammo = GLOB.ammo_list[/datum/ammo/energy/lasgun/M43]
-		fire_delay -= 7
-		fire_sound = 'sound/weapons/guns/fire/laser.ogg'
-		to_chat(user, "[icon2html(src, user)] You [overcharge? "<B>disable</b>" : "<B>enable</b>" ] [src]'s overcharge mode.")
-		overcharge = FALSE
+	var/max_overcharge_mode = length(overcharge_datums)
+	if(overcharge_position >= max_overcharge_mode)
+		overcharge_position = 1
+	else 
+		overcharge_position += 1
 
-	//load_into_chamber()
+	playsound(user, 'sound/weapons/emitter.ogg', 5, 0, 2)
+	charge_cost = initial(overcharge_datums[overcharge_position].charge_cost)
+	ammo = GLOB.ammo_list[initial(overcharge_datums[overcharge_position].ammo)]
+	fire_delay = initial(overcharge_datums[overcharge_position].fire_delay)
+	fire_sound = initial(overcharge_datums[overcharge_position].fire_sound)
+	to_chat(user, initial(overcharge_datums[overcharge_position].message_to_user))
 
 	if(user)
 		var/obj/screen/ammo/A = user.hud_used.ammo //The ammo HUD
@@ -410,113 +423,3 @@
 
 /obj/item/weapon/gun/energy/lasgun/M43/practice/unique_action(mob/user)
 	return
-
-//-------------------------------------------------------
-//M43 Sunfury Lasgun MK1
-
-/obj/item/weapon/gun/energy/lasgun/plasmagun
-	name = "\improper M99 Recoilless Plasma Launcher"
-	desc = "An accurate, recoilless plasma based battle rifle with an integrated charge selector. Ideal for longer range engagements. Uses power cells instead of ballistic magazines.."
-	force = 20 //Large and hefty! Includes stock bonus.
-	icon_state = "m43"
-	item_state = "m43"
-	max_shots = 50 //codex stuff
-	load_method = CELL //codex stuff
-	ammo = /datum/ammo/energy/lasgun/M43
-	cell_type = null
-	charge_cost = M43_STANDARD_AMMO_COST
-	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/bipod,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/attached_gun/grenade,
-						/obj/item/attachable/attached_gun/flamer,
-						/obj/item/attachable/attached_gun/shotgun,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/focuslens,
-						/obj/item/attachable/widelens,
-						/obj/item/attachable/heatlens,
-						/obj/item/attachable/efflens,
-						/obj/item/attachable/pulselens)
-	var/overcharge_position = 1
-	var/list/overcharge_datums = list(
-						/datum/plasmagun/base/standard,
-						/datum/plasmagun/base/overcharge,
-						/datum/plasmagun/base/heat
-								)
-
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ENERGY|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/lasgun)
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 15, "stock_x" = 22, "stock_y" = 12)
-
-	accuracy_mult_unwielded = 0.5 //Heavy and unwieldy; you don't one hand this.
-	scatter_unwielded = 100 //Heavy and unwieldy; you don't one hand this.
-	damage_falloff_mult = 0.25
-	fire_delay = 3
-
-/datum/plasmagun/base
-	var/charge_cost = 0
-	var/ammo = null
-	var/fire_delay = 0
-	var/fire_sound = null
-	var/message_to_user = ""
-
-/datum/plasmagun/base/standard
-	charge_cost = 10
-	ammo = /datum/ammo/energy/lasgun/M43
-	fire_delay = 3
-	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
-	message_to_user = "You set the Plasmagun's charge mode to standard fire."
-
-/datum/plasmagun/base/overcharge
-	charge_cost = 20
-	ammo = /datum/ammo/energy/lasgun/M43/overcharge
-	fire_delay = 10
-	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
-	message_to_user = "You set the Plasmagun's charge mode to overcharge."
-
-/datum/plasmagun/base/heat
-	charge_cost = 20
-	ammo = /datum/ammo/energy/lasgun/M43/heat
-	fire_delay = 8
-	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
-	message_to_user = "You set the Plasmagun's charge mode to wave heat."
-
-
-//variant without ugl attachment
-/obj/item/weapon/gun/energy/lasgun/plasmagun/stripped
-	starting_attachment_types = list()
-
-/obj/item/weapon/gun/energy/lasgun/plasmagun/unique_action(mob/user)
-	return toggle_plasmamode(user)
-
-/obj/item/weapon/gun/energy/lasgun/Initialize(mapload, ...)
-	. = ..()
-	update_icon()
-
-//Toggles charge mode. Changes how ther weapon operates
-/obj/item/weapon/gun/energy/lasgun/plasmagun/proc/toggle_plasmamode(mob/user)
-	var/max_overcharge_mode = length(overcharge_datums)
-	if(overcharge_position >= max_overcharge_mode)
-		overcharge_position = 1
-	else 
-		overcharge_position += 1
-
-	playsound(user, 'sound/weapons/emitter.ogg', 5, 0, 2)
-	charge_cost = initial(overcharge_datums[overcharge_position].charge_cost)
-	ammo = GLOB.ammo_list[initial(overcharge_datums[overcharge_position].ammo)]
-	fire_delay = initial(overcharge_datums[overcharge_position].fire_delay)
-	fire_sound = initial(overcharge_datums[overcharge_position].fire_delay)
-	to_chat(user, initial(overcharge_datums[overcharge_position].message_to_user))
-
-	if(user)
-		var/obj/screen/ammo/A = user.hud_used.ammo //The ammo HUD
-		A.update_hud(user)
-
-	return TRUE
