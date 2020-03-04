@@ -168,6 +168,15 @@
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/type71
 
+/obj/item/ammo_magazine/rifle/type71/firegun
+	name = "\improper Type 71 magazine (7.62x39mm)"
+	desc = "A 7.62x39mm magazine that fits in the Type 71 rifle."
+	caliber = "7.62x39mm"
+	icon_state = "type_71"
+	default_ammo = /datum/ammo/flamethrower/firegun
+	max_rounds = 400
+	gun_type = /obj/item/weapon/gun/rifle/type71/carbine/firegun
+
 
 //-------------------------------------------------------
 //SX-16 AUTOMATIC SHOTGUN (makes more sense for it to be a rifle)

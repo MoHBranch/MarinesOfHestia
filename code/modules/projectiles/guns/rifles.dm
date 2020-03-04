@@ -528,6 +528,10 @@
 	accuracy_mult = 2
 	accuracy_mult_unwielded = 0.8
 
+/obj/item/weapon/gun/rifle/type71/carbine/firegun
+	name = "\improper Type Fire gun"
+	desc = "A gun that shoots fire"
+	current_mag = /obj/item/ammo_magazine/rifle/type71/firegun
 
 //-------------------------------------------------------
 //SX-16 AUTOMATIC SHOTGUN (It acts more like a rifle then a shotgun, so it makes sense to put it here)

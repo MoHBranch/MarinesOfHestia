@@ -1373,6 +1373,34 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 		return
 	flame_radius(2, T)
 
+/datum/ammo/flamethrower/firegun
+	name = "flame"
+	icon_state = "pulse0"
+	hud_state = "flame"
+	hud_state_empty = "flame_empty"
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR
+	armor_type = "fire"
+	max_range = 5
+	damage = 50
+
+/datum/ammo/flamethrower/firegun/on_hit_mob(mob/M,obj/projectile/P)
+	drop_flame(get_turf(P))
+
+/datum/ammo/flamethrower/firegun/on_hit_obj(obj/O,obj/projectile/P)
+	drop_flame(get_turf(P))
+
+/datum/ammo/flamethrower/firegun/on_hit_turf(turf/T,obj/projectile/P)
+	drop_flame(get_turf(P))
+
+/datum/ammo/flamethrower/firegun/do_at_max_range(obj/projectile/P)
+	drop_flame(get_turf(P))
+
+/datum/ammo/flamethrower/firegun/drop_flame(turf/T)
+	if(!istype(T))
+		return
+	flame_radius(1, T)
+
 /datum/ammo/flamethrower/green
 	name = "green flame"
 	hud_state = "flame_green"
