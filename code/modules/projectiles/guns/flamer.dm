@@ -25,10 +25,34 @@
 	gun_skill_category = GUN_SKILL_HEAVY_WEAPONS
 	attachable_offset = list("rail_x" = 12, "rail_y" = 23)
 	fire_delay = 35
+	var/current_flamer_mode = 1
+	var/list/flamer_mode_datums = list(
+									/datum/item/weapon/gun/flamer/base/off,
+									/datum/item/weapon/gun/flamer/base/stream,
+									/datum/item/weapon/gun/flamer/base/glob,
+									/datum/item/weapon/gun/flamer/base/spray
+									)
+/datum/item/weapon/gun/flamer/base
+	var/lit = FALSE
+	var/ammo = null
 
+/datum/item/weapon/gun/flamer/base/off
+	lit = FALSE
+
+/datum/item/weapon/gun/flamer/base/stream
+	lit = TRUE
+	ammo = /datum/ammo/flamethrower
+
+/datum/item/weapon/gun/flamer/base/glob
+	lit = TRUE
+	ammo = /datum/ammo/flamethrower/blue
+
+/datum/item/weapon/gun/flamer/base/spray
+	lit = TRUE
+	ammo = /datum/ammo/flamethrower/green
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
-	return toggle_flame(user)
+	return toggle_flame_mode(user)
 
 
 /obj/item/weapon/gun/flamer/examine_ammo_count(mob/user)
@@ -45,9 +69,16 @@
 			return
 
 
-/obj/item/weapon/gun/flamer/proc/toggle_flame(mob/user)
+/obj/item/weapon/gun/flamer/proc/toggle_flame_mode(mob/user)
+	var/max_flamer_mode = length(flamer_mode_datums)
+	if(current_flamer_mode >= max_flamer_mode)
+		current_flamer_mode = 1
+	else 
+		current_flamer_mode += 1
+
+	lit = initial(flamer_mode_datums[current_flamer_mode].lit)
+
 	playsound(user, lit ? 'sound/weapons/guns/interact/flamethrower_off.ogg' : 'sound/weapons/guns/interact/flamethrower_on.ogg', 25, 1)
-	lit = !lit
 
 	var/image/I = image('icons/obj/items/gun.dmi', src, "+lit")
 	I.pixel_x += 3
@@ -58,6 +89,11 @@
 		overlays -= I
 		qdel(I)
 
+	ammo = GLOB.ammo_list[initial(flamer_mode_datums[current_flamer_mode].ammo)]
+	current_mag.default_ammo = initial(flamer_mode_datums[current_flamer_mode].ammo)
+	
+	var/obj/screen/ammo/A = user.hud_used.ammo
+	A.update_hud(user)
 	return TRUE
 
 
