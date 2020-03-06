@@ -19,7 +19,7 @@
 
 
 /datum/outfit/job/som/standard
-	name = "SOM Rifleman"
+	name = "SOM Standard"
 	jobtype = /datum/job/som/standard
 
 	id = /obj/item/card/id/dogtag/som
@@ -27,12 +27,12 @@
 	ears = /obj/item/radio/headset/distress/som
 	w_uniform = /obj/item/clothing/under/som
 	shoes = /obj/item/clothing/shoes/marine/som
-	wear_suit = /obj/item/clothing/suit/storage/marine/somstandard
+	wear_suit = /obj/item/clothing/suit/storage/marine/som
 	gloves = /obj/item/clothing/gloves/marine/som
 	head = /obj/item/clothing/head/helmet/marine/som
-	suit_store = /obj/item/weapon/gun/rifle/ak200
-	r_store = /obj/item/explosive/grenade/incendiary/molotov
-	l_store = /obj/item/storage/pouch/firstaid/full
+	suit_store = /obj/item/weapon/gun/rifle/ak47
+	r_store = /obj/item/storage/pouch/general/som
+	l_store = /obj/item/storage/pouch/pistol
 	back = /obj/item/storage/backpack/lightpack/som
 
 
@@ -41,16 +41,33 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick, SLOT_IN_SUIT)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick, SLOT_IN_SUIT)
 
+	H.equip_to_slot_or_del(new /obj/item/radio, SLOT_IN_BACKPACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, SLOT_IN_BACKPACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE, SLOT_IN_BACKPACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, SLOT_IN_BACKPACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/upp, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/upp, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/upp, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/splint, SLOT_IN_BACKPACK)
 
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak200mag, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak200mag, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak200mag, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak200mag, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak200mag, SLOT_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/tramadol, SLOT_IN_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/tricordrazine, SLOT_IN_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/tramadol, SLOT_IN_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/tricordrazine, SLOT_IN_HEAD)
+
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak47, SLOT_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak47, SLOT_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak47, SLOT_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak47, SLOT_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ak47, SLOT_IN_BELT)
+
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/upp, SLOT_IN_L_POUCH)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/zoom, SLOT_IN_R_POUCH)
+
 
 //SOM Medic
 /datum/job/som/medic
@@ -126,7 +143,7 @@
 	ears = /obj/item/radio/headset/distress/som
 	w_uniform = /obj/item/clothing/under/som/veteran
 	shoes = /obj/item/clothing/shoes/marine/som
-	wear_suit = /obj/item/clothing/suit/storage/marine/som/somheavy
+	wear_suit = /obj/item/clothing/suit/storage/marine/som/veteran
 	gloves = /obj/item/clothing/gloves/marine/som/veteran
 	head = /obj/item/clothing/head/helmet/marine/som/veteran
 	glasses = /obj/item/clothing/glasses/hud/health

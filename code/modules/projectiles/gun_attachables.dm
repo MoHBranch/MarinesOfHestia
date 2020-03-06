@@ -502,20 +502,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "t12barrel"
 	flags_attach_features = NONE
 
-/obj/item/attachable/ak200barrel
-	name = "ak200 barrel"
-	desc = "The standard barrel on the AK-200. CANNOT BE REMOVED."
-	slot = "muzzle"
-	icon_state = "ak200barrel"
-	flags_attach_features = NONE
-
-/obj/item/attachable/srpkbarrel
-	name = "srpk barrel"
-	desc = "The standard barrel on the SRPK. CANNOT BE REMOVED."
-	slot = "muzzle"
-	icon_state = "srpkbarrel"
-	flags_attach_features = NONE
-
 ///////////// Rail attachments ////////////////////////
 
 /obj/item/attachable/reddot
@@ -833,48 +819,6 @@ Defined in conflicts.dm of the #defines folder.
 	name = "TX-15 Stock"
 	desc = "The standard stock for the TX-15. Cannot be removed."
 	icon_state = "tx15stock"
-	wield_delay_mod = 0 SECONDS
-	pixel_shift_x = 32
-	pixel_shift_y = 13
-	flags_attach_features = NONE
-	accuracy_mod = 0
-	recoil_mod = 0
-	melee_mod = 0
-	scatter_mod = 0
-	movement_acc_penalty_mod = 0
-
-/obj/item/attachable/stock/srpkstock
-	name = "SRPK Stock"
-	desc = "The standard stock for the SRPK. Cannot be removed."
-	icon_state = "srpkstock"
-	wield_delay_mod = 0 SECONDS
-	pixel_shift_x = 32
-	pixel_shift_y = 13
-	flags_attach_features = NONE
-	accuracy_mod = 0
-	recoil_mod = 0
-	melee_mod = 0
-	scatter_mod = 0
-	movement_acc_penalty_mod = 0
-	
-/obj/item/attachable/stock/ak200stock
-	name = "AK200 Stock"
-	desc = "The standard stock for the AK200. Cannot be removed."
-	icon_state = "ak200stock"
-	wield_delay_mod = 0 SECONDS
-	pixel_shift_x = 32
-	pixel_shift_y = 13
-	flags_attach_features = NONE
-	accuracy_mod = 0
-	recoil_mod = 0
-	melee_mod = 0
-	scatter_mod = 0
-	movement_acc_penalty_mod = 0
-
-/obj/item/attachable/stock/ak180cstock
-	name = "AK180c Stock"
-	desc = "The standard stock for the AK180c. Cannot be removed."
-	icon_state = "ak180cstock"
 	wield_delay_mod = 0 SECONDS
 	pixel_shift_x = 32
 	pixel_shift_y = 13
