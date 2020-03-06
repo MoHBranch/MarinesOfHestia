@@ -124,15 +124,3 @@
 	icon_state = "FP9000"
 	max_rounds = 50
 	gun_type = /obj/item/weapon/gun/smg/p90
-
-//-------------------------------------------------------
-//PK-RAK SMG magazine
-
-/obj/item/ammo_magazine/smg/standard_smg
-	name = "\improper PK-RAK magazine (10x20mm)"
-	desc = "A 10x20mm caseless Submachine Gun magazine for the PK-RAK."
-	caliber = "10x20mm caseless"
-	icon_state = "pkrakmag"
-	max_rounds = 60
-	w_class = WEIGHT_CLASS_SMALL
-	gun_type = /obj/item/weapon/gun/smg/standard_smg
