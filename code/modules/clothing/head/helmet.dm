@@ -587,10 +587,10 @@
 
 /obj/item/clothing/head/helmet/marine/som
 	name = "\improper S6 combat helmet"
-	desc = "A helmet with origns of heavily modified head protection used back in the mining colonies. Protection from threats is bad but it's better than nothing."
+	desc = "A helmet with origns of heavily modified head protection used back in the mining colonies. It's durable, reliable, and makes a good way to keep ones brains located where they currently are."
 	icon_state = "som_helmet"
 	item_state = "som_helmet"
-	armor = list("melee" = 38, "bullet" = 38, "laser" = 32, "energy" = 22, "bomb" = 12, "bio" = 5, "rad" = 5, "fire" = 22, "acid" = 22)
+	armor = list("melee" = 65, "bullet" = 60, "laser" = 30, "energy" = 20, "bomb" = 25, "bio" = 40, "rad" = 0, "fire" = 20, "acid" = 20)
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROTECTION_TEMPERATURE
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NONE
@@ -599,16 +599,23 @@
 
 /obj/item/clothing/head/helmet/marine/som/veteran
 	name = "\improper S7 combat helmet"
-	desc = "A helmet of origins off of heavily modified helmets used back in the mining colonies. Seems to have extensive modification."
+	desc = "A helmet of origins off of heavily modified helmets used back in the mining colonies. Originally built for hostile atmospheres, this helmet has been upgraded to have serious balistic protection!"
 	icon_state = "som_helmet_veteran"
 	item_state = "som_helmet_veteran"
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 45, "energy" = 35, "bomb" = 30, "bio" = 20, "rad" = 20, "fire" = 35, "acid" = 35)
+	armor = list("melee" = 75, "bullet" = 70, "laser" = 60, "energy" = 40, "bomb" = 60, "bio" = 50, "rad" = 0, "fire" = 50, "acid" = 55)
 
 
 /obj/item/clothing/head/helmet/marine/som/leader
 	name = "\improper S8 combat helmet"
-	desc = "A helmet of origins off of heavily modified helmets used back in the mining colonies."
+	desc = "A helmet of origins off of heavily modified helmets used back in the mining colonies. Originally built for hostile atmospheres, this helmet was used by Mining Colonies security forces until the uprising!"
 	icon_state = "som_helmet_leader"
 	item_state = "som_helmet_leader"
-	armor = list("melee" = 45, "bullet" = 38, "laser" = 48, "energy" = 30, "bomb" = 20, "bio" = 15, "rad" = 15, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 75, "bullet" = 65, "laser" = 60, "energy" = 40, "bomb" = 60, "bio" = 50, "rad" = 0, "fire" = 50, "acid" = 55)
+
+/obj/item/clothing/head/helmet/marine/som/warlord
+	name = "\improper S8 'Warlord' combat helmet"
+	desc = "A helmet of origins off of heavily modified helmets used back in the mining colonies. Originally built for mining demolitonist crews, it's been repurposed into a counter to KolonialWatche's B-series of armor."
+	icon_state = "som_helmet_superheavyhelm"
+	item_state = "som_helmet_superheavyhelm"
+	armor = list("melee" = 75, "bullet" = 65, "laser" = 60, "energy" = 40, "bomb" = 60, "bio" = 50, "rad" = 0, "fire" = 50, "acid" = 55)
 

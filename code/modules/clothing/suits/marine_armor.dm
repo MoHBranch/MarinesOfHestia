@@ -654,34 +654,77 @@
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 
-
-
-/obj/item/clothing/suit/storage/marine/som
-	name = "\improper S12 hauberk"
-	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. It's light but practically gives no armor."
+/obj/item/clothing/suit/storage/marine/somlight
+	name = "\improper SoM light hauberk"
+	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. This design is hobbled together with scrap and the standard mining hauberk found on mining colonys. Focusing more on speed and agility rather than proper defence in a combat-situation, It's prefered by Insurgent scouts, combat-techies and conscripted forces."
 	icon_state = "som_armor"
 	item_state = "som_armor"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	flags_armor_protection = CHEST|GROIN
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 30, "bio" = 5, "rad" = 5, "fire" = 30, "acid" = 30)
+	flags_armor_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_cold_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_heat_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
+	armor = list("melee" = 45, "bullet" = 45, "laser" = 35, "energy" = 20, "bomb" = 30, "bio" = 30, "rad" = 10, "fire" = 25, "acid" = 30)
+	blood_overlay_type = "armor"
 	flags_item_map_variant = NONE
 
+	/obj/item/clothing/suit/storage/marine/somstandard
+	name = "\improper SoM combat hauberk"
+	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. Offering solid defence to small arms fire."
+	icon_state = "som_armor_medium"
+	item_state = "som_armor_medium"
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	flags_armor_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_cold_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_heat_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
+	armor = list("melee" = 55, "bullet" = 55, "laser" = 35, "energy" = 20, "bomb" = 40, "bio" = 40, "rad" = 10, "fire" = 40, "acid" = 40)
+	blood_overlay_type = "armor"
+	flags_item_map_variant = NONE
 
-/obj/item/clothing/suit/storage/marine/som/veteran
-	name = "\improper S12 combat Hauberk"
-	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. Seems to have been modifed much further than other pieces like it. Heavier but tougher because of it."
+/obj/item/clothing/suit/storage/marine/som/somheavy
+	name = "\improper SoM heavy combat plate"
+	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. This design of the regular Insurgency Hauberk features custom-made armoured plates to defend against small-arms fire and explosive weaponry. Purpose-made for frontline Insurgents!"
 	icon_state = "som_armor_veteran"
 	item_state = "som_armor_veteran"
-	slowdown = SLOWDOWN_ARMOR_MEDIUM
-	flags_armor_protection = CHEST|GROIN|ARMS|LEGS
-	armor = list("melee" = 40, "bullet" = 40, "laser" = 30, "energy" = 40, "bomb" = 30, "bio" = 10, "rad" = 10, "fire" = 40, "acid" = 40)
-
-
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	flags_armor_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_cold_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_heat_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
+	armor = list("melee" = 65, "bullet" = 70, "laser" = 60, "energy" = 30, "bomb" = 60, "bio" = 50, "rad" = 20, "fire" = 50, "acid" = 50)
+	blood_overlay_type = "armor"
+	flags_item_map_variant = NONE
+    
 /obj/item/clothing/suit/storage/marine/som/leader
-	name = "\improper S13 leader hauberk"
-	desc = "A heavily modified modified piece of mining equipment remade for general purpose combat use. Modified extensively than other pieces like it but heavier because of it."
+	name = "\improper SoM 'Command' combat plate"
+	desc = "A heavily modified modified piece of mining equipment remade for general purpose combat use. It is a mining Hauberk with durable light-weight plates that provide comparable speed and durability to M3SQL armor!"
 	icon_state = "som_armor_leader"
 	item_state = "som_armor_leader"
-	slowdown = SLOWDOWN_ARMOR_MEDIUM
-	flags_armor_protection = CHEST|GROIN|ARMS|LEGS
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 40, "energy" = 50, "bomb" = 40, "bio" = 15, "rad" = 15, "fire" = 50, "acid" = 50)
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_armor_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_cold_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_heat_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
+	armor = list("melee" = 55, "bullet" = 55, "laser" = 45, "energy" = 40, "bomb" = 40, "bio" = 40, "rad" = 15, "fire" = 40, "acid" = 40)
+	blood_overlay_type = "armor"
+	flags_item_map_variant = NONE
+
+/obj/item/clothing/suit/storage/marine/som/warlord
+	name = "\improper SoM 'Warlord' exoskeleton"
+	desc = "A heavily modified piece of mining equipment remade for general purpose combat use. This variant is built using an Industrial exoskeleton and a mining demolitionists suit retrofitted with armoured plating and an on-board Freya Medical System!"
+	icon_state = "som_armor_superheavy"
+	item_state = "som_armor_superheavy"
+	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
+	flags_armor_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_cold_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	flags_heat_protection = CHEST|GROIN|ARMS|LEGS|HANDS|FEET
+	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
+	armor = list("melee" = 70, "bullet" = 75, "laser" = 70, "energy" = 80, "bomb" = 80, "bio" = 55, "rad" = 20, "fire" = 80, "acid" = 70)
+	blood_overlay_type = "armor"
+	flags_item_map_variant = NONE

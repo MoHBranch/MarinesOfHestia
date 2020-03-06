@@ -218,3 +218,39 @@
 	default_ammo = /datum/ammo/bullet/shotgun/tx15_slug
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/standard_autoshotgun
+//-------------------------------------------------------
+//AK-200 Assault Rifle
+
+/obj/item/ammo_magazine/rifle/ak200mag
+	name = "\improper AK-200 Assault Rifle magazine (10x24mm)"
+	desc = "A 10mm Assault Rifle magazine for the AK200."
+	caliber = "10x24mm caseless"
+	icon_state = "ak200mag"
+	w_class = WEIGHT_CLASS_NORMAL
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 50
+	gun_type = /obj/item/weapon/gun/rifle/ak200	
+//-------------------------------------------------------
+//SRPK Squad Support Weapon
+
+/obj/item/ammo_magazine/srpkmagazine
+	name = "\improper SRPK SSW drum magazine (10x24mm)"
+	desc = "A drum magazine for the SRPK Squad Support Weapon."
+	icon_state = "srpkmag"
+	caliber = "10x24mm caseless"
+	default_ammo = /datum/ammo/bullet/rifle
+	w_class = WEIGHT_CLASS_NORMAL
+	max_rounds = 75
+	gun_type = /obj/item/weapon/gun/rifle/srpk_ssw
+//-------------------------------------------------------
+//AK-180c Carbine
+
+/obj/item/ammo_magazine/rifle/ak180cmag
+	name = "\improper AK-180c Carbine magazine (10x24mm)"
+	desc = "A 10mm Carbine magazine for the AK-180c."
+	caliber = "10x24mm caseless"
+	icon_state = "ak180cmag"
+	w_class = WEIGHT_CLASS_NORMAL
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 40
+	gun_type = /obj/item/weapon/gun/rifle/ak180c

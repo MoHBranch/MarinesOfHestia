@@ -174,9 +174,9 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/dmr, /obj/item/attachable/scope/mini)
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 13, "rail_y" = 18, "under_x" = 24, "under_y" = 13, "stock_x" = 14, "stock_y" = 10)
 
-	fire_delay = 0.8 SECONDS
+	fire_delay = 0.6 SECONDS
 	accuracy_mult = 1.25
-	scatter = -15
+	scatter = -30
 	burst_amount = 1
 
 
@@ -601,3 +601,133 @@
 
 	fire_delay = 1.1 SECONDS
 	burst_amount = 1
+//-------------------------------------------------------
+//AK-200 Assault Rifle
+
+/obj/item/weapon/gun/rifle/ak200
+    name = "\improper AK-200 assault rifle"
+    desc = "The youngest brother of the Kalishnakov family of rifles. Despite losing out on it's contract with the Kolonialwatche, it still finds frequent use by Insurgency and poorer PDF forces. It's been modified to use 10x24mm caseless ammunition."
+    icon_state = "ak200"
+    item_state = "ak200"
+    fire_sound = "sound/weapons/guns/fire/t18.ogg"
+   	dry_fire_sound = 'sound/weapons/guns/fire/m41a_empty.ogg'
+    unload_sound = 'sound/weapons/guns/interact/t18_unload.ogg'
+    reload_sound = 'sound/weapons/guns/interact/t18_reload.ogg'
+    caliber = "10x24mm caseless" //codex
+    max_shells = 50 //codex
+    force = 20
+    current_mag = /obj/item/ammo_magazine/rifle/ak200mag
+    attachable_allowed = list(
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/gyro,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/ak200barrel,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/stock/ak200stock,
+						/obj/item/attachable/burstfire_assembly,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/attached_gun/flamer,
+						/obj/item/attachable/attached_gun/shotgun)
+
+    flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_LOAD_INTO_CHAMBER
+    gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_BURSTFIRE, GUN_FIREMODE_AUTOBURST, GUN_FIREMODE_AUTOMATIC)
+    starting_attachment_types = list(/obj/item/attachable/stock/ak200stock, /obj/item/attachable/ak200barrel)
+    attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 16,"rail_x" = 9, "rail_y" = 18, "under_x" = 23, "under_y" = 11, "stock_x" = 14, "stock_y" = 10)
+
+    fire_delay = 0.2 SECONDS
+    burst_delay = 0.15 SECONDS
+    accuracy_mult = 1.15
+    scatter = -10
+    wield_delay = 0.7 SECONDS
+    burst_amount = 3
+    aim_slowdown = 0.4
+    damage_falloff_mult = 0.5
+	//-------------------------------------------------------
+//RPK Light Machine Gun // SoM's default LMG
+
+/obj/item/weapon/gun/rifle/srpk_ssw
+	name = "\improper Svarog RPK SSW"
+	desc = "A tried and true squad support weapon. Named after the Avangardian Pagan God of Fire due to it's ridiculous design orginally allowing the use of a flamethrower underneath. It is lighter than it's T26 counterpart due to having a smaller magazine. It is modified to use 10x24mm ammunition."
+	icon_state = "srpk"
+	item_state = "srpk"
+	caliber = "10x24mm caseless" //codex
+	max_shells = 75 //codex
+	force = 30
+	aim_slowdown = 0.8
+	wield_delay = 1.2 SECONDS
+	fire_sound =  'sound/weapons/guns/fire/rifle.ogg'
+	dry_fire_sound = 'sound/weapons/guns/fire/m41a_empty.ogg'
+	unload_sound = 'sound/weapons/guns/interact/T42_unload.ogg'
+	reload_sound = 'sound/weapons/guns/interact/T42_reload.ogg'
+	current_mag = /obj/item/ammo_magazine/srpkmagazine
+	attachable_allowed = list(
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/srpkbarrel,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/stock/srpkstock,
+						/obj/item/attachable/attached_gun/flamer,
+						/obj/item/attachable/magnetic_harness)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER|GUN_LOAD_INTO_CHAMBER
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
+	starting_attachment_types = list(/obj/item/attachable/stock/srpkstock, /obj/item/attachable/srpkbarrel,)
+	gun_skill_category = GUN_SKILL_HEAVY_WEAPONS
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 19, "under_x" = 11, "under_y" = 13, "stock_x" = 17, "stock_y" = 12)
+	fire_delay = 0.2 SECONDS
+	burst_amount = 1
+	accuracy_mult_unwielded = 0.5
+	accuracy_mult = 0.9
+	scatter = 20
+	scatter_unwielded = 80
+
+	//-------------------------------------------------------
+//AK-180c // SoM's choice carbine
+
+/obj/item/weapon/gun/rifle/ak180c
+    name = "\improper AK-180c"
+    desc = "The Carbine varient of the AK-200 using light-weight materials at a rather surpisingly low cost-per-unit! It is the favorite of crewman and demolitonists amongst Insurgency forces. It's modified to use 10x24mm caseless ammunition."
+    icon_state = "ak180c"
+    item_state = "ak180c"
+    fire_sound = "sound/weapons/guns/fire/t18.ogg"
+   	dry_fire_sound = 'sound/weapons/guns/fire/m41a_empty.ogg'
+    unload_sound = 'sound/weapons/guns/interact/t18_unload.ogg'
+    reload_sound = 'sound/weapons/guns/interact/t18_reload.ogg'
+    caliber = "10x24mm caseless" //codex
+    max_shells = 40 //codex
+   	force = 20
+    current_mag = /obj/item/ammo_magazine/rifle/ak180cmag
+    attachable_allowed = list(
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/gyro,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/t18barrel,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/stock/ak180cstock,
+						/obj/item/attachable/burstfire_assembly,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/attached_gun/flamer,
+						/obj/item/attachable/attached_gun/shotgun)
+
+    flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_LOAD_INTO_CHAMBER
+    gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_BURSTFIRE, GUN_FIREMODE_AUTOBURST)
+    starting_attachment_types = list(/obj/item/attachable/stock/ak180cstock,)
+    attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 10, "rail_y" = 20, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 10)
+
+    fire_delay = 0.25 SECONDS
+    burst_delay = 0.10 SECONDS
+    accuracy_mult = 1.10
+    scatter = -5
+    burst_amount = 4
+    aim_slowdown = 0.30
+    damage_falloff_mult = 0.9
