@@ -148,7 +148,6 @@
 	max_shells = 10 //codex
 	current_mag = /obj/item/ammo_magazine/rifle/standard_dmr
 	attachable_allowed = list(
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/compensator,
@@ -174,9 +173,9 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/dmr, /obj/item/attachable/scope/mini)
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 13, "rail_y" = 18, "under_x" = 24, "under_y" = 13, "stock_x" = 14, "stock_y" = 10)
 
-	fire_delay = 0.8 SECONDS
+	fire_delay = 0.5 SECONDS
 	accuracy_mult = 1.25
-	scatter = -15
+	scatter = -25
 	burst_amount = 1
 
 

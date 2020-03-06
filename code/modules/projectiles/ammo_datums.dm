@@ -458,8 +458,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accurate_range_min = 0
 	accurate_range = 30
-	damage = 55
-	scatter = -15
+	damage = 60
 	penetration = 15
 
 /datum/ammo/bullet/rifle/standard_dmr/incendiary
