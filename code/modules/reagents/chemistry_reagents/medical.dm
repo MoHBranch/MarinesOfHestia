@@ -325,6 +325,7 @@
 
 /datum/reagent/medicine/admibusadoze/on_mob_life(mob/living/L, metabolism)
 	L.revive()
+	return ..()
 
 /datum/reagent/medicine/synaptizine
 	name = "Synaptizine"
