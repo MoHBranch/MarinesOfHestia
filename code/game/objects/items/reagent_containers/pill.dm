@@ -132,6 +132,11 @@
 	list_reagents = list(/datum/reagent/medicine/adminordrazine = 50)
 	pill_id = 3
 
+/obj/item/reagent_containers/pill/admibusadoze
+	pill_desc = "An Admibusadoze Plus pill. It's magic. We don't have to explain it."
+	list_reagents = list(/datum/reagent/medicine/admibusadoze = 2)
+	pill_id = 3
+
 /obj/item/reagent_containers/pill/sleeptoxin
 	pill_desc = "A sleeping pill commonly used to treat insomnia."
 	list_reagents = list(/datum/reagent/toxin/sleeptoxin = 15)
