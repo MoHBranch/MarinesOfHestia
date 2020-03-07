@@ -317,6 +317,14 @@
 		C.disabilities = 0
 	return ..()
 
+/datum/reagent/medicine/admibusadoze //An EVEN MORE OP chemical for admins
+	name = "Admibusadoze Plus"
+	description = "It's magic. We don't have to explain it."
+	color = "#C8A5DC" // rgb: 200, 165, 220
+	taste_description = "badmins"
+
+/datum/reagent/medicine/admibusadoze/on_mob_life(mob/living/L, metabolism)
+	L.revive()
 
 /datum/reagent/medicine/synaptizine
 	name = "Synaptizine"

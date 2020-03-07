@@ -142,6 +142,12 @@
 	icon_state = "holyflask"
 	list_reagents = list(/datum/reagent/medicine/adminordrazine = 60)
 
+/obj/item/reagent_containers/glass/bottle/admibusadoze
+	name = "\improper Admibusadoze Plus bottle"
+	desc = "A small bottle. Contains the liquid essence of the gods."
+	icon_state = "holyflask"
+	list_reagents = list(/datum/reagent/medicine/admibusadoze = 60)
+
 /obj/item/reagent_containers/glass/bottle/capsaicin
 	name = "\improper Capsaicin bottle"
 	desc = "A small bottle. Contains hot sauce."
